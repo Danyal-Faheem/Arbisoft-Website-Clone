@@ -48,7 +48,7 @@ export const HomePageCarousel = () => {
           description: "View our success story"
         },
         {
-          color: "primary",
+          color: "info",
           description: "Tell us about your project"
         }
       ]
@@ -64,7 +64,7 @@ export const HomePageCarousel = () => {
           description: "View our success story"
         },
         {
-          color: "primary",
+          color: "info",
           description: "Tell us about your project"
         }
       ]
@@ -72,7 +72,7 @@ export const HomePageCarousel = () => {
 ]
 
 return (
-    <Carousel navButtonsAlwaysVisible stopAutoPlayOnHover>
+    <Carousel height={700} navButtonsAlwaysVisible stopAutoPlayOnHover>
         {
             items.map( (item, i) => <CarouselItem key={item.heading} {...item}/> )
         }

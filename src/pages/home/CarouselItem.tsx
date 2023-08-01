@@ -6,6 +6,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import {
   IHomePageCarouselItemButton,
   IHomePageCarouselItems,
@@ -14,6 +15,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import { CustomButton } from "../../components/CustomButton";
 
 interface ICarouselItemProps {}
 
@@ -29,29 +31,29 @@ export const CarouselItem = ({
         <img src={largeImg} srcSet={`${smallImg} 100w, ${largeImg} 1000w`} width="100%"/>
         <Box sx={{
             position: "absolute",
-            top: "0",
+            top: "150px",
+            left: "200px",
             color: "white",
             right: "20",
             width: "40%",
         }}>
 
         <Typography
-          variant="h3"
+          variant="h2"
           align="left"
+          gutterBottom
           >
           {heading}
         </Typography>
         <Typography
-          variant="subtitle1"
           align="left"
+          gutterBottom
           >
           {subheading}
         </Typography>
             {buttons.map((button: IHomePageCarouselItemButton) => {
                 return (
-                    <Button key={button.description}>
-                        {button.description}
-                    </Button>
+                    <CustomButton styles={{mt:3, mb: 3, mr:3}} key={button.description} text={button.description} color={button.color} EndIcon={ArrowRightAltIcon} />
                 )
             })}
         </Box>
