@@ -4,6 +4,7 @@ import iconPeople from "../../assets/icon-people.svg";
 import iconBulb from "../../assets/icon-bulb.svg";
 import iconClutch from "../../assets/icon-clutch.svg";
 import iconHome from "../../assets/icon-home.svg";
+import worldBackground from "../../assets/bg-10.8d9aa0ad.png";
 
 export const JourneyCounter = () => {
   let items = [
@@ -42,37 +43,46 @@ export const JourneyCounter = () => {
           justifyContent: "center",
         }}
       >
-        <Typography align="left" display="inline" variant="h2">
+        <Typography align="center" display="inline" variant="h2">
           <strong>{`A Journey of `}</strong>
-        </Typography>
-        <Typography
-          align="left"
-          display="inline"
-          variant="h2"
-          sx={{ color: "blue" }}
-        >
-          <strong>
-            <CountUp isCounting end={15} duration={3} /> Years
-          </strong>
+          <span style={{ color: "blue" }}>
+            <strong>
+              <CountUp isCounting end={15} duration={3} /> Years
+            </strong>
+          </span>
         </Typography>
       </Box>
-      <Box sx={{ borderRadius: "5px", border: "1px solid", borderTop: "none" }}>
+      <Box sx={{ backgroundImage: `url('${worldBackground}')`, pb: 10 }}>
         <Stack
           direction={{ xs: "column", sm: "row" }}
-          sx={{ justifyContent: "space-evenly" }}
+          sx={{
+            justifyContent: "space-evenly",
+            background: "white",
+            borderRadius: "5px",
+            border: "1px solid lightgray",
+            borderTop: "none",
+            borderWidth: "thin",
+          }}
         >
-          {items.map((item) => {
+          {items.map((item, index) => {
             return (
-                <>
-              <Box key={item.description} sx={{ m: 5, display: "flex", flexDirection: "column", alignItems: "center"}}>
-                <img src={item.icon} />
-                <Typography variant="h3">
-                  <CountUp isCounting end={item.end} duration={3} />
-                  {item.plusIcon && "+"}
-                </Typography>
-                <Typography>{item.description}</Typography>
+              <Box key={index}>
+                <Box
+                  sx={{
+                    m: 5,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <img src={item.icon} />
+                  <Typography variant="h3">
+                    <CountUp isCounting end={item.end} duration={3} />
+                    {item.plusIcon && "+"}
+                  </Typography>
+                  <Typography>{item.description}</Typography>
+                </Box>
               </Box>
-                </>
             );
           })}
         </Stack>
